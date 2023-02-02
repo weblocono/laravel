@@ -33,4 +33,12 @@ class User extends Authenticatable
         'password',
     ];
 
+    /**
+     * Get user comments
+     * 
+     */
+    public function comments() 
+    {
+        return $this->hasMany(Comment::class, "user_id", "id");
+    }
 }
