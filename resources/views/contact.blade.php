@@ -1,5 +1,7 @@
 @extends('layout.layout')
 
+@section('title', 'Contact')
+
 @section('content')
 <div class="heading-page header-text">
     <section class="page-heading">

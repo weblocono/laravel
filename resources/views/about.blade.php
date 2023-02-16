@@ -1,5 +1,7 @@
 @extends('layout.layout')
 
+@section('title', 'About')
+
 @section('content')
         <!-- Page Content -->
     <!-- Banner Starts Here -->

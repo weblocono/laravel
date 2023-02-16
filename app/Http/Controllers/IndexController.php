@@ -31,4 +31,13 @@ class IndexController extends Controller
         return view("post-details");
     }
 
+    public function login() 
+    {
+        return view('login');
+    }
+
+    public function registration() 
+    {
+        return view('registration');
+    }
 }

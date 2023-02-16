@@ -1,4 +1,5 @@
 @extends('layout.layout')
+@section('title', 'Home')
 
 @section('content')
 <div class="main-banner header-text">
