@@ -19,7 +19,17 @@
                       @csrf
                       <div class="row">
                         <div class="col-md-12 col-sm-12">
-                          @error('login')
+                          @error('invalid')
+                            <div class="alert alert-danger" role="alert">
+                              {{ $message}}
+                            </div>
+                          @enderror
+                          @error('banned')
+                            <div class="alert alert-danger" role="alert">
+                              {{ $message}}
+                            </div>
+                          @enderror
+                          @error('email')
                             <div class="alert alert-danger" role="alert">
                               {{ $message}}
                             </div>
@@ -28,17 +38,11 @@
                             <input name="email" type="text" id="email" placeholder="Ваш email" required="">
                           </fieldset>
                         </div>
-                        @error('password')
-                          <div class="alert alert-danger" role="alert">
-                            {{ $message}}
-                          </div>
-                        @enderror
                         <div class="col-md-12 col-sm-12">
                             <fieldset>
                               <input name="password" type="text" id="email" placeholder="Ваш пароль" required="">
                             </fieldset>
                         </div>
-
 
                         <div class="col-lg-12">
                           <fieldset>

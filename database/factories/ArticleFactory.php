@@ -18,7 +18,7 @@ class ArticleFactory extends Factory
             "content" => $this->faker->text(300),
             "is_published" => rand(0, 1),
             "likes" => rand(0, 10_000),
-            "slug" => str_replace(" ", "-", strtolower($this->faker->title() . rand(0, 100))),
+            "slug" => $this->faker->slug(),
             "user_id" => rand(1, 2),
         ];
     }

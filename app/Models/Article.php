@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Article extends Model
 {
@@ -16,5 +17,11 @@ class Article extends Model
         "likes",
         "slug",
         "user_id",
+        "theme",
     ];
+
+    public function author() 
+    {
+        return $this->hasOne(User::class, 'id', 'user_id')->first();
+    }
 }

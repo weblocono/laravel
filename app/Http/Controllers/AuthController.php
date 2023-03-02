@@ -2,64 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public function registration(Request $request) 
+    public function registration(RegistrationRequest $request) 
     {
-        $valodator = Validator::make($request->all(), [
-            'username' => 'required|min:4|unique:users,username',
-            'email' => 'required|email|unique:users,email',
-            'password' => ['required', 'min:6', 'same:re_password'],
-            'policy' => 'accepted',
-        ]);
+        $data = $request->validated();
 
+        $data['password'] = Hash::make($request['password']);
 
-        if ($valodator->fails()) {
-            return back()
-            ->withErrors($valodator->errors())
-            ->withInput($request->all());
-        }
-
-        $user = User::query()->create([
-            'password' => Hash::make($request['password'])
-        ] +$valodator->validated());
+        $user = User::query()->create($data);
 
         Auth::login($user);
 
         return redirect()->route('home');
     }
 
-    public function login(Request $request) 
+    public function login(LoginRequest $request) 
     {
-        $valodator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => ['required', 'min:6'],
-        ]);
-
-        if ($valodator->fails()) {
+        if (!Auth::attempt($request->validated())) {
             return back()
-            ->withErrors($valodator->errors())
-            ->withInput($request->all());
-        }
-
-        if (!Auth::attempt($valodator->validated())) {
-            return back()
-            ->withErrors(['invalid' => 'no correct email or password'])
-            ->withInput($request->all());
+            ->withErrors(['invalid' => 'no correct email or password']);
         }
 
         if (Auth::user()->role === 'banned') {
             Auth::logout();
 
             return back()
-            ->withErrors($valodator->errors(['banned' => 'You are has been blocked! :3']))
-            ->withInput($request->all());
+            ->withErrors($request->errors(['banned' => 'You are has been blocked! :3']));
         }
 
         return redirect()->route('home');

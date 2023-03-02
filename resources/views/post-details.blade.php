@@ -1,4 +1,5 @@
 @extends('layout.layout')
+@section('title', 'Post')
 
 @section('content')
 <div class="heading-page header-text">
@@ -50,7 +51,7 @@
               <div class="col-lg-12">
                 <div class="blog-post">
                   <div class="blog-thumb">
-                    <img src="assets/images/blog-post-02.jpg" alt="">
+                    <img src="/assets/images/blog-post-02.jpg" alt="">
                   </div>
                   <div class="down-content">
                     <span>Lifestyle</span>
@@ -71,13 +72,6 @@
                             <li><a href="#">TemplateMo</a></li>
                           </ul>
                         </div>
-                        <div class="col-6">
-                          <ul class="post-share">
-                            <li><i class="fa fa-share-alt"></i></li>
-                            <li><a href="#">Facebook</a>,</li>
-                            <li><a href="#"> Twitter</a></li>
-                          </ul>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -92,7 +86,7 @@
                     <ul>
                       <li>
                         <div class="author-thumb">
-                          <img src="assets/images/comment-author-01.jpg" alt="">
+                          <img src="/assets/images/comment-author-01.jpg" alt="">
                         </div>
                         <div class="right-content">
                           <h4>Charles Kate<span>May 16, 2020</span></h4>
@@ -101,7 +95,7 @@
                       </li>
                       <li class="replied">
                         <div class="author-thumb">
-                          <img src="assets/images/comment-author-02.jpg" alt="">
+                          <img src="/assets/images/comment-author-02.jpg" alt="">
                         </div>
                         <div class="right-content">
                           <h4>Thirteen Man<span>May 20, 2020</span></h4>
@@ -110,7 +104,7 @@
                       </li>
                       <li>
                         <div class="author-thumb">
-                          <img src="assets/images/comment-author-03.jpg" alt="">
+                          <img src="/assets/images/comment-author-03.jpg" alt="">
                         </div>
                         <div class="right-content">
                           <h4>Belisimo Mama<span>May 16, 2020</span></h4>
@@ -119,7 +113,7 @@
                       </li>
                       <li class="replied">
                         <div class="author-thumb">
-                          <img src="assets/images/comment-author-02.jpg" alt="">
+                          <img src="/assets/images/comment-author-02.jpg" alt="">
                         </div>
                         <div class="right-content">
                           <h4>Thirteen Man<span>May 22, 2020</span></h4>
