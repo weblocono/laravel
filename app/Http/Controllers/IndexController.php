@@ -7,13 +7,21 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function index() 
+    public function index(Request $request) 
     {
         $articals = Article::query()
-            ->where('is_published', '=', true)
-            ->orderByDesc('created_at')
+            ->where('is_published', '=', true);
+            
+            if ($request->get('q')) {
+                $query = strtolower(trim($request->get('q')));
+
+                $articals = $articals->where('title', 'LIKE', "%$query%");
+            }
+
+        $articals = $articals->orderByDesc('created_at')
             ->limit(3)
             ->get();
+
 
         return view('home', compact('articals'));
     }

@@ -19,21 +19,8 @@
                       @csrf
                       <div class="row">
                         <div class="col-md-12 col-sm-12">
-                          @error('invalid')
-                            <div class="alert alert-danger" role="alert">
-                              {{ $message}}
-                            </div>
-                          @enderror
-                          @error('banned')
-                            <div class="alert alert-danger" role="alert">
-                              {{ $message}}
-                            </div>
-                          @enderror
-                          @error('email')
-                            <div class="alert alert-danger" role="alert">
-                              {{ $message}}
-                            </div>
-                          @enderror
+                          @include('components.alerts.error', ['error' => 'invalid'])
+                          @include('components.alerts.error', ['error' => 'banned'])
                           <fieldset>
                             <input name="email" type="text" id="email" placeholder="Ваш email" required="">
                           </fieldset>
@@ -43,6 +30,8 @@
                               <input name="password" type="text" id="email" placeholder="Ваш пароль" required="">
                             </fieldset>
                         </div>
+
+                        
 
                         <div class="col-lg-12">
                           <fieldset>

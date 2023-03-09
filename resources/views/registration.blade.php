@@ -15,39 +15,29 @@
                     <h2>Login</h2>
                   </div>
                   <div class="content">
-                    <form id="contact" action="{{ route("registration_action")}}" method="POST">
+                    <form id="contact" action="{{ route("registration_action")}}" method="POST" enctype="multipart/form-data">
                       <div class="row">
                         @csrf
                         <div class="col-md-12 col-sm-12">
-                          @error('username')
-                            <div class="alert alert-danger" role="alert">
-                              {{ $message}}
-                            </div>
-                          @enderror
+                          @include('components.alerts.error', ['error' => 'username'])
                           <fieldset>
                             <input value="{{ old('username') }}" name="username" type="text" id="name" placeholder="Ваше имя" required="">
                           </fieldset>
                         </div>
                         <div class="col-md-12 col-sm-12">
-                          @error('email')
-                            <div class="alert alert-danger" role="alert">
-                              {{ $message}}
-                            </div>
-                          @enderror
+                          @include('components.alerts.error', ['error' => 'email'])
                           <fieldset>
                             <input value="{{ old('email') }}" name="email" type="text"  placeholder="Ваш email" required="">
                           </fieldset>
                         </div>
-                        @error('password')
-                            <div class="alert alert-danger" role="alert">
-                              {{ $message}}
-                            </div>
-                        @enderror
+                        @include('components.alerts.error', ['error' => 'password'])
                         <div class="col-md-12 col-sm-12">
                             <fieldset>
                               <input name="password" type="text"  placeholder="Ваш пароль" required="">
                             </fieldset>
                         </div>
+
+
 
                         <div class="col-md-12 col-sm-12">
                             <fieldset>
@@ -55,12 +45,26 @@
                             </fieldset>
                         </div>
 
+                        <div class="col-md-12 col-sm-12">
+                          <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text"
+                                      id="inputGroupFileAddon01">Upload</span>
+                              </div>
+                              <div class="custom-file">
+                                  <input type="file" name="photo" class="custom-file-input"
+                                      id="inputGroupFile01"
+                                      aria-describedby="inputGroupFileAddon01"
+                                      >
+                                  <label class="custom-file-label"
+                                      for="inputGroupFile01">Choose file (*.jpg, *.jpeg, *.png)</label>
+                              </div>
+                          </div>
+                        </div>
+
+
                         <div class="col-lg-12">
-                          @error('policy')
-                            <div class="alert alert-danger" role="alert">
-                              {{ $message}}
-                            </div>
-                          @enderror
+                          @include('components.alerts.error', ['error' => 'policy'])
                           <fieldset style="display: flex; align-items: center; justify-content: flex-start;">
                               <input
                                   style="width: auto; height: auto; margin: 0 10px 0 0;"

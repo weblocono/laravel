@@ -24,4 +24,9 @@ class Article extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id')->first();
     }
+
+    public function comments() 
+    {
+        return $this->hasMany(Comment::class, 'article_id', 'id')->get();
+    }
 }

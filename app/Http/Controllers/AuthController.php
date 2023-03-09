@@ -16,7 +16,13 @@ class AuthController extends Controller
 
         $data['password'] = Hash::make($request['password']);
 
+        if ($request->file('photo')) {
+            $data['image_path'] = $request->file('photo')->store('public/images');
+        }
+
         $user = User::query()->create($data);
+
+        
 
         Auth::login($user);
 

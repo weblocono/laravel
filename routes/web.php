@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -27,6 +28,11 @@ Route::controller(ArticleController::class)->group(function () {
     Route::get("/articles", "getArticles")->name('articles');
     Route::get('/articles/{article:slug}', 'show')->name('postDetails');
 });
+
+Route::controller(CommentController::class)->middleware('auth')->group(function() {
+    Route::post('/articles/comment', 'store')->name('comment.store');
+});
+
 
 // Route::group(["prefix" => '/users', "controller" => UserController::class], function () {
 
