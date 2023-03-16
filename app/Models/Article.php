@@ -20,7 +20,7 @@ class Article extends Model
         "theme",
     ];
 
-    public function author() 
+    public function author()
     {
         return $this->hasOne(User::class, 'id', 'user_id')->first();
     }

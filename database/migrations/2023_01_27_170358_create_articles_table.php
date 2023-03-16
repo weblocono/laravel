@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticalsTable extends Migration
+class CreateArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,7 @@ class CreateArticalsTable extends Migration
             $table->boolean("is_published")->default(false);
             $table->integer("likes")->default(0);
             $table->string('slug', 600);
-            $table->foreignId("user_id")->constained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("user_id")->constrained('users', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateArticalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articals');
+        Schema::dropIfExists('articles');
     }
 }

@@ -14,9 +14,15 @@ class ArticleController extends Controller
         return view('blog', compact('articles'));
     }
 
-
-    public function show(Article $article) 
+    public function show(Article $article)
     {
         return view('post-details', compact('article'));
+    }
+
+    public function delete(Article $article) 
+    {
+        $article->delete();
+
+        return back();
     }
 }
