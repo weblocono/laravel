@@ -9,6 +9,8 @@ class ArticleImage extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         "article_id",
         "path",

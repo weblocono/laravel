@@ -72,7 +72,7 @@
                               type="checkbox" name="policy" />
                               <p>I agree to the privacy policy</p>
                           </fieldset>
-                      </div>
+                        </div>
 
                         <div class="col-lg-12">
                           <fieldset>
